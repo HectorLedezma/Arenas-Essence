@@ -1,0 +1,5 @@
+Nombre=A
+Apellido=A
+RUT=A
+Telefono=A
+Contraseña=A
