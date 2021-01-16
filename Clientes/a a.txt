@@ -1,0 +1,9 @@
+Nombre=a
+Apellido=a
+Telefono=a
+Direccion=a
+Trabajo= 
+Fecha=a
+Hora=a
+Tipo=A domicilio
+Anotaciones=a	

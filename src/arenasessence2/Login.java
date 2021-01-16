@@ -63,7 +63,7 @@ public class Login extends javax.swing.JFrame {
         System.out.println("OK");
     }
     public void crearE(){
-        String Earchivo = ERUT.getText()+".txt";
+        String Earchivo = ERUT.getText()+".Log";
         File Eubi = new File(Eubicacion);
         File Earchi = new File(Eubicacion+Earchivo);
         
