@@ -64,6 +64,7 @@ public class ArenasEssence2 {
                                 podologia.setVisible(true);
                                 podologia.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora(), ppl.otros());
                                 if(podologia.fincl == true){
+                                    ppl.setOK(podologia.isOK());
                                     contiex = false;
                                     ppl.setVisible(true);
                                     podologia.setVisible(false);

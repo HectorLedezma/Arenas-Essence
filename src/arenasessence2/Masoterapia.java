@@ -6,6 +6,8 @@
 package arenasessence2;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
 
@@ -176,29 +178,199 @@ public class Masoterapia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    String q1;
+    String q2;
+    String q3;
+    String q4;
+    String q5;
+    String q6;
+    String q7;
+    String q8;
+    String q9;
+    String q10;
+    String q11;
+    String q12;
+    String q13;
+    String q14;
+    String q15;
+    
+    private String c1(boolean click){
+        if(click == true){
+            this.q1 = "Si";
+        }else{
+            this.q1 = "No";
+        }
+        return q1;
+    }
+    private String c2(boolean click){
+        if(click == true){
+            this.q2 = "Si";
+        }else{
+            this.q2 = "No";
+        }
+        return q2;
+    }
+    private String c3(boolean click){
+        if(click == true){
+            this.q3 = "Si";
+        }else{
+            this.q3 = "No";
+        }
+        return q3;
+    }
+    private String c4(boolean click){
+        if(click == true){
+            this.q4 = "Si";
+        }else{
+            this.q4 = "No";
+        }
+        return q4;
+    }
+    private String c5(boolean click){
+        if(click == true){
+            this.q5 = "Si";
+        }else{
+            this.q5 = "No";
+        }
+        return q5;
+    }
+    private String c6(boolean click){
+        if(click == true){
+            this.q6 = "Si";
+        }else{
+            this.q6 = "No";
+        }
+        return q6;
+    }
+    private String c7(boolean click){
+        if(click == true){
+            this.q7 = "Si";
+        }else{
+            this.q7 = "No";
+        }
+        return q7;
+    }
+    private String c8(boolean click){
+        if(click == true){
+            this.q8 = "Si";
+        }else{
+            this.q8 = "No";
+        }
+        return q8;
+    }
+    private String c9(boolean click){
+        if(click == true){
+            this.q9 = "Si";
+        }else{
+            this.q9 = "No";
+        }
+        return q9;
+    }
+    private String c10(boolean click){
+        if(click == true){
+            this.q10 = "Si";
+        }else{
+            this.q10 = "No";
+        }
+        return q10;
+    }
+    private String c11(boolean click){
+        if(click == true){
+            this.q11 = "Si";
+        }else{
+            this.q11 = "No";
+        }
+        return q11;
+    }
+    private String c12(boolean click){
+        if(click == true){
+            this.q12 = "Si";
+        }else{
+            this.q12 = "No";
+        }
+        return q12;
+    }
+    private String c13(boolean click){
+        if(click == true){
+            this.q13 = "Si";
+        }else{
+            this.q13 = "No";
+        }
+        return q13;
+    }
+    private String c14(boolean click){
+        if(click == true){
+            this.q14 = "Si";
+        }else{
+            this.q14 = "No";
+        }
+        return q14;
+    }
+    private String c15(boolean click){
+        if(click == true){
+            this.q15 = "Si";
+        }else{
+            this.q15 = "No";
+        }
+        return q15;
+    }
+    
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         // TODO add your handling code here:
         this.fincl = true;
     }//GEN-LAST:event_VolverActionPerformed
 
-        private String barra = File.separator;
-    private String Ubicacion = System.getProperty("user.dir")+barra+this.getName()+barra;
-    
+    private String barra = File.separator;
+    private String Ubicacion = System.getProperty("user.dir") + barra + "Masoterapia" + barra;
+
     boolean OK = false;
-    
-    private void Crear(){
-        String Archivo = nombre+"."+this.getName();
-        File crea_Ubicacion = new File(Ubicacion);
-        File crea_archivo = new File(Ubicacion+Archivo);
-        if(crea_archivo.exists()){
-            
-        }else{
-            try{
+
+    private void Crear() {
+        LocalDate hoy = LocalDate.now();
+        LocalTime ora = LocalTime.now();
+        String ubicacion2 = Ubicacion + nombre + barra;
+        System.out.println(ubicacion2);
+        String Archivo = hoy+" "+ora.getHour()+"-"+ora.getMinute()+"-"+ora.getSecond()+".Masoterapia";
+        File crea_Ubicacion = new File(ubicacion2);
+        File crea_archivo = new File(ubicacion2 + Archivo);
+        if (crea_archivo.exists()) {
+            //JOptionPane.showMessageDialog(rootPane, "Por favor ingrese la fecha de hoy");
+        } else {
+            try {
                 crea_Ubicacion.mkdirs();
-                Formatter crea = new Formatter(Ubicacion+Archivo);
-                crea.format("%s\r\n%s", "");
+                Formatter crea = new Formatter(ubicacion2 + Archivo);
+                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
+                        "Fecha=" + hoy,
+                        "hora=" + ora,
+                        "Nombre=" + nombre,
+                        "Apellido=" + apellido,
+                        "Telefono=" + tel,
+                        "Edad=" + edad,
+                        "Fecha de cita=" + fecha,
+                        "Hora de cita=" + hora,
+                        "Otros=" + otro,
+                        "a1="+c1(N1.isSelected()),
+                        "a2="+c1(N2.isSelected()),
+                        "a3="+c1(N3.isSelected()),
+                        "a4="+c1(N4.isSelected()),
+                        "a5="+c1(N5.isSelected()),
+                        "a6="+c1(N6.isSelected()),
+                        "a7="+c1(N7.isSelected()),
+                        "a8="+c1(N8.isSelected()),
+                        "a9="+c1(N9.isSelected()),
+                        "a10="+c1(N10.isSelected()),
+                        "a11="+c1(N11.isSelected()),
+                        "a12="+c1(N12.isSelected()),
+                        "a13="+c1(N13.isSelected()),
+                        "a14="+c1(N14.isSelected()),
+                        "a15="+c1(N15.isSelected()));
                 crea.close();
                 this.OK = true;
+                N1.setSelected(false);N6.setSelected(false);N11.setSelected(false);
+                N2.setSelected(false);N7.setSelected(false);N12.setSelected(false);
+                N3.setSelected(false);N8.setSelected(false);N13.setSelected(false);
+                N4.setSelected(false);N9.setSelected(false);N14.setSelected(false);
+                N5.setSelected(false);N10.setSelected(false);N15.setSelected(false);
                 JOptionPane.showMessageDialog(rootPane, "Persona registrada");
                 this.fincl = true;
             }catch(Exception e){
@@ -231,6 +403,9 @@ String otro;
     }
     public boolean isFincl() {
         return fincl;
+    }
+    public boolean isOK() {
+        return OK;
     }
     /**
      * @param args the command line arguments

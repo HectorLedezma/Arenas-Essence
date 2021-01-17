@@ -6,6 +6,8 @@
 package arenasessence2;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
 
@@ -34,8 +36,6 @@ public class Podologia extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Hoy = new javax.swing.JTextField();
-        jLabel39 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -148,9 +148,6 @@ public class Podologia extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Podologia");
 
-        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel39.setText("Fecha de hoy");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -158,11 +155,7 @@ public class Podologia extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(445, 445, 445)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(153, 153, 153)
-                .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Hoy, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(438, 438, 438))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,11 +163,6 @@ public class Podologia extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Hoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel39))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel2.setText("Antecedentes personales");
@@ -220,6 +208,11 @@ public class Podologia extends javax.swing.JFrame {
         jLabel10.setText("Pulso Pedio");
 
         Pulsopedido.setText("Presente");
+        Pulsopedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PulsopedidoActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Sensibilidad");
 
@@ -227,9 +220,9 @@ public class Podologia extends javax.swing.JFrame {
 
         jLabel12.setText("Evaluacion");
 
-        jLabel13.setText("Pie derecho");
+        jLabel13.setText("Pie izquierdo");
 
-        jLabel14.setText("Pie izquierdo");
+        jLabel14.setText("Pie derecho");
 
         jLabel15.setText("Hidratacion");
 
@@ -852,23 +845,222 @@ String otro;
         this.fincl = true;
     }//GEN-LAST:event_VolverActionPerformed
     private String barra = File.separator;
+    private String Ubicacion = System.getProperty("user.dir") + barra + "Podologia" + barra;
+    String limo;
+    String Pulso;
+    String sen;
+    String lavp;
+    String sec;
+    String calza;
+    String calse;
+    String auex;
+    String cdia;
+    String descal;
+    String check;
+    String bolcan;
+    private String limov(boolean lm){
+        if(lm == true){
+            this.limo = "Si";
+        }else{
+            this.limo = "No";
+        }
+        return this.limo;
+    }
+    private String pul(boolean lm){
+        if(lm == true){
+            this.Pulso = "Presente";
+        }else{
+            this.Pulso = "Ausente";
+        }
+        return this.Pulso;
+    }
+    private String sensi(boolean lm){
+        if(lm == true){
+            this.sen = "Presente";
+        }else{
+            this.sen = "Ausente";
+        }
+        return this.sen;
+    }
+    private String lavp(boolean lm){
+        if(lm == true){
+            this.lavp = "Si";
+        }else{
+            this.lavp = "No";
+        }
+        return this.lavp;
+    }
+    private String sec(boolean lm){
+        if(lm == true){
+            this.sec = "Si";
+        }else{
+            this.sec = "No";
+        }
+        return this.sec;
+    }
     
+    private String calza(boolean lm){
+        if(lm == true){
+            this.calza = "Si";
+        }else{
+            this.calza = "No";
+        }
+        return this.calza;
+    }
     
+    private String calse(boolean lm){
+        if(lm == true){
+            this.calse = "Si";
+        }else{
+            this.calse = "No";
+        }
+        return this.calse;
+    }
+    private String auex(boolean lm){
+        if(lm == true){
+            this.auex = "Si";
+        }else{
+            this.auex = "No";
+        }
+        return this.auex;
+    }
+    
+    private String cdia(boolean lm){
+        if(lm == true){
+            this.cdia = "Si";
+        }else{
+            this.cdia = "No";
+        }
+        return this.cdia;
+    }
+    
+    private String descal(boolean lm){
+        if(lm == true){
+            this.descal = "Si";
+        }else{
+            this.descal = "No";
+        }
+        return this.descal;
+    }
+    
+    private String check(boolean lm){
+        if(lm == true){
+            this.check = "Si";
+        }else{
+            this.check = "No";
+        }
+        return this.check;
+    }
+    
+    private String bolcan(boolean lm){
+        if(lm == true){
+            this.bolcan = "Si";
+        }else{
+            this.bolcan = "No";
+        }
+        return this.bolcan;
+    }
     boolean OK = false;
     
-    private void Crear(){
-        String Ubicacion = System.getProperty("user.dir")+barra+"Podologia"+barra+nombre+barra;
-        String Archivo = nombre+".Podologia";
-        File crea_Ubicacion = new File(Ubicacion);
-        File crea_archivo = new File(Ubicacion+Archivo);
-        if(crea_archivo.exists()){
-            
-        }else{
-            try{
+    private void Crear() {
+        LocalDate hoy = LocalDate.now();
+        LocalTime ora = LocalTime.now();
+        String ubicacion2 = Ubicacion + nombre + barra;
+        System.out.println(ubicacion2);
+        String Archivo = hoy+" "+ora.getHour()+"-"+ora.getMinute()+"-"+ora.getSecond()+".Podologia";
+        File crea_Ubicacion = new File(ubicacion2);
+        File crea_archivo = new File(ubicacion2 + Archivo);
+        if (crea_archivo.exists()) {
+            //JOptionPane.showMessageDialog(rootPane, "Por favor ingrese la fecha de hoy");
+        } else {
+            try {
                 crea_Ubicacion.mkdirs();
-                Formatter crea = new Formatter(Ubicacion+Archivo);
-                crea.format("%s\r\n%s", "");
+                Formatter crea = new Formatter(ubicacion2 + Archivo);
+                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
+                        "Fecha=" + hoy,//1
+                        "hora=" + ora,//2
+                        "Nombre=" + nombre,
+                        "Apellido=" + apellido,
+                        "Telefono=" + tel,
+                        "Edad=" + edad,
+                        "Fecha de cita=" + fecha,
+                        "Hora de cita=" + hora,
+                        "Otros=" + otro,//9
+                        "HTA="+HTA.getText(),//10
+                        "DM="+DM.getText(),//11
+                        "Cardiopatia="+Cardiopatia.getText(),//12
+                        "Marcapasos="+Marcapasos.getText(),//13
+                        "Otros="+Otros.getText(),//14
+                        "LimMov="+limov(LimMovilidad.isSelected()),//15
+                        "PulsoPedido="+pul(Pulsopedido.isSelected()),//16
+                        "Sensivilidad="+sensi(Sensivilidad.isSelected()),//17
+                        "HidratacionIZ="+HidratacionDER.getText(),"HidratacionDE="+HidratacionIZQ.getText(),//19
+                        "ColorIZ="+ColorDER.getText(),"ColorDE="+ColorIZQ.getText(),//21
+                        "OlorIZ="+OlorDER.getText(),"OlorDE="+OlorIZQ.getText(),//23
+                        "TemIZ="+TempDER.getText(),"TemDE="+TempIZQ.getText(),//25
+                        "DolorIZ="+DolorDER.getText(),"DolorDE="+DolorIZQ.getText(),//27
+                        "InflamacionIZ="+InflaDER.getText(),"InflamacionDE="+InflaIZQ.getText(),//29
+                        "OtroIZ="+OtroDER.getText(),"OtroDE="+OtroIZQ.getText(),//31
+                        "AcepinIZ="+AsepIZQ.getText(),"AcepinDE="+AsepDER.getText(),//33
+                        "LipiezaIZ="+LimpIZQ.getText(),"LimpiezaDE="+LimpDER.getText(),//35
+                        "OnicotomiaIZ="+OnicIZQ.getText(),"OnicotomiaDE="+OnicDER.getText(),//37
+                        "DespiculIZ="+DespiIZQ.getText(),"DespiculDE="+DespiDER.getText(),//39
+                        "ResecadoIZ="+ResecIZQ.getText(),"ResecadoDE="+ResecDER.getText(),//41
+                        "DesvuIZ="+DesuIZQ.getText(),"DesvuDE="+DesuDER.getText(),//43
+                        "ResecadoHipIZ="+ResechipIZQ.getText(),"ResecadoHipDE="+ResechipDER.getText(),//45
+                        "ResecadoHelIZ="+ResecheIZQ.getText(),"ResecadoHelDE="+ResecheDER.getText(),//47
+                        "LimDigIZ="+LimpdigIZQ.getText(),"LimpDigDE="+LimpdigDER.getText(),//49
+                        "AsepfinalIZ="+AsepfinIZQ.getText(),"AsepfinalDE="+AsepfinDER.getText(),//51
+                        "MasPodIZ="+MaspodIZQ.getText(),"MasPodDE="+MaspodDER.getText(),//53
+                        "OtrotraIZ="+OtroTraIZQ.getText(),"OtrotraDE="+OtroTraDER.getText(),//55
+                        "PatoloIZ="+PatoIZQ.getText(),"PatolDE="+PatoDER.getText(),//57
+                        "LavadoPies="+lavp(Lavpies.isSelected()),//58
+                        "BuebSec="+sec(Buensec.isSelected()),//59
+                        "Calsado="+calza(Calzado.isSelected()),//60
+                        "Calset="+calse(Calcetines.isSelected()),//61
+                        "Autoex="+auex(Autoexamen.isSelected()),//62
+                        "Controdia="+cdia(Controldiab.isSelected()),//63
+                        "Descal="+descal(Descalzo.isSelected()),//64
+                        "Chequeo="+check(Chequeos.isSelected()),//65
+                        "Blosa="+bolcan(Watero.isSelected()));//66
                 crea.close();
+                HTA.setText("");
+                DM.setText("");
+                Cardiopatia.setText("");
+                Marcapasos.setText("");
+                Otros.setText("");
+                LimMovilidad.setSelected(false);
+                Pulsopedido.setSelected(false);
+                Sensivilidad.setSelected(false);
+                HidratacionDER.setText("");HidratacionIZQ.setText("");
+                ColorDER.setText("");ColorIZQ.setText("");//21
+                OlorDER.setText("");OlorIZQ.setText("");//23
+                TempDER.setText("");TempIZQ.setText("");//25
+                DolorDER.setText("");DolorIZQ.setText("");//27
+                InflaDER.setText("");InflaIZQ.setText("");//29
+                OtroDER.setText("");OtroIZQ.setText("");//31
+                AsepIZQ.setText("");AsepDER.setText("");//33
+                LimpIZQ.setText("");LimpDER.setText("");//35
+                OnicIZQ.setText("");OnicDER.setText("");//37
+                DespiIZQ.setText("");DespiDER.setText("");//39
+                ResecIZQ.setText("");ResecDER.setText("");//41
+                DesuIZQ.setText("");DesuDER.setText("");//43
+                ResechipIZQ.setText("");ResechipDER.setText("");//45
+                ResecheIZQ.setText("");ResecheDER.setText("");//47
+                LimpdigIZQ.setText("");LimpdigDER.setText("");
+                AsepfinIZQ.setText("");AsepfinDER.setText("");//51
+                MaspodIZQ.setText("");MaspodDER.setText("");//53
+                OtroTraIZQ.setText("");OtroTraDER.setText("");//55
+                PatoIZQ.setText("");PatoDER.setText("");//57
+                Lavpies.setSelected(false);//58
+                Buensec.setSelected(false);
+                Calzado.setSelected(false);
+                Calcetines.setSelected(false);
+                Autoexamen.setSelected(false);
+                Controldiab.setSelected(false);//63
+                Descalzo.setSelected(false);//64
+                Chequeos.setSelected(false);//65
+                Watero.setSelected(false);//66
                 this.OK = true;
                 JOptionPane.showMessageDialog(rootPane, "Persona registrada");
                 this.fincl = true;
@@ -878,10 +1070,19 @@ String otro;
             
         }
     }
+
+    public boolean isOK() {
+        return OK;
+    }
+    
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
         Crear();
     }//GEN-LAST:event_FinalizarActionPerformed
+
+    private void PulsopedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PulsopedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PulsopedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -944,7 +1145,6 @@ String otro;
     private javax.swing.JTextField HTA;
     private javax.swing.JTextField HidratacionDER;
     private javax.swing.JTextField HidratacionIZQ;
-    private javax.swing.JTextField Hoy;
     private javax.swing.JTextField InflaDER;
     private javax.swing.JTextField InflaIZQ;
     private javax.swing.JCheckBox Lavpies;
@@ -1012,7 +1212,6 @@ String otro;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
