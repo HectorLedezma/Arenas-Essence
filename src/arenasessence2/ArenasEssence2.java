@@ -1,5 +1,7 @@
 package arenasessence2;
 
+import java.io.File;
+import java.time.LocalTime;
 import javax.swing.JOptionPane;
 
 public class ArenasEssence2 {
@@ -7,11 +9,16 @@ public class ArenasEssence2 {
     public static void main(String[] args) {
         Login pri = new Login();
         Pantalla ppl = new Pantalla();
-        
+        String barra = File.separator;
         Masaje masaje = new Masaje();//1
         Podologia podologia = new Podologia();//2
         Masoterapia masoterapia = new Masoterapia();//3
         Colorimetria colorimetria = new Colorimetria();//4
+        
+        FichaMasaje masaj = new FichaMasaje();
+        FichaPodologia podol = new FichaPodologia();
+        FichaMasoterapia masot = new FichaMasoterapia();
+        FichaColorimetria colori = new FichaColorimetria();
         
         boolean conti0 = false;
         boolean conti1 = true;
@@ -106,6 +113,43 @@ public class ArenasEssence2 {
                             break;
                     }
                     ppl.tapa = false;
+                }
+                if(ppl.Fichas == true){
+                    String nombrearchi = ppl.getjTable3().getValueAt(ppl.getjTable3().getSelectedRow(), 0).toString()+"."+ppl.getCarpetatratamiento().getSelectedItem();
+                    String nombreclien = ppl.getjTable3().getValueAt(ppl.getjTable3().getSelectedRow(), 1).toString();
+                    System.out.println(nombrearchi);
+                    String ubicacion = System.getProperty("user.dir")+barra+ppl.getCarpetatratamiento().getSelectedItem()+barra+nombreclien+barra+nombrearchi;
+                    //System.out.println(ubicacion);
+                    File contenedor = new File(ubicacion);
+                            switch(ppl.carpetatrata()){
+                                case 1:
+                                    while(masaj.bolver == false){
+                                        masaj.setVisible(true);
+                                        ppl.setVisible(false);
+                                        masaj.PasaArchivo(contenedor);
+                                    }
+                                    masaj.setVisible(false);
+                                    ppl.setVisible(true);
+                                    ppl.setfich(false);
+                                    masaj.setBolver(false);
+                                    ppl.getjTable3().setModel(ppl.getDtm());
+                                    break;
+                                case 2:
+                                    while(podol.bolver == false){
+                                        podol.setVisible(true);
+                                        ppl.setVisible(false);
+                                        //System.out.println(LocalTime.now());
+                                    }
+                                    podol.setVisible(false);
+                                    ppl.setVisible(true);
+                                    ppl.setfich(false);
+                                    podol.setBolver(false);
+                                    ppl.getjTable3().setModel(ppl.getDtm());
+                                    break;
+                                case 3:break;
+                                case 4:break;
+                                default:break;
+                            }
                 }
             }
             

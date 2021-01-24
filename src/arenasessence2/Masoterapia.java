@@ -370,7 +370,7 @@ public class Masoterapia extends javax.swing.JFrame {
                 N2.setSelected(false);N7.setSelected(false);N12.setSelected(false);
                 N3.setSelected(false);N8.setSelected(false);N13.setSelected(false);
                 N4.setSelected(false);N9.setSelected(false);N14.setSelected(false);
-                N5.setSelected(false);N10.setSelected(false);N15.setSelected(false);
+                N5.setSelected(false);N10.setSelected(false);N15.setSelected(false); 
                 JOptionPane.showMessageDialog(rootPane, "Persona registrada");
                 this.fincl = true;
             }catch(Exception e){

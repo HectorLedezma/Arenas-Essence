@@ -3,19 +3,26 @@ package arenasessence2;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.time.LocalTime;
 import java.util.Formatter;
 import java.util.Properties;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Pantalla extends javax.swing.JFrame {
 
     public Pantalla() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     boolean volv;
     boolean filtros = false;
+    boolean Fichas = false;
+    
+    
     
     
     String barra = File.separator;
@@ -85,12 +92,19 @@ public class Pantalla extends javax.swing.JFrame {
     private String nomtra(){
         return Trabacl.getItemAt(Trabacl.getItemCount());
     }
+    public void setfich(boolean fic){
+        this.Fichas = fic;
+    }
+
+    public JComboBox<String> getCarpetatratamiento() {
+        return carpetatratamiento;
+    }
     
     private void regTabla(){
-        if(carpetatratamiento.getText().equals("") || Nombrecliente.getText().equals("")){
+        if(carpetatratamiento.getSelectedIndex() == 0 || Nombrecliente.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Debe llenar ambos campos");
         }else{
-            String ubicacion = System.getProperty("user.dir")+barra+carpetatratamiento.getText()+barra+Nombrecliente.getText()+barra;
+            String ubicacion = System.getProperty("user.dir")+barra+carpetatratamiento.getItemAt(carpetatratamiento.getSelectedIndex())+barra+Nombrecliente.getText()+barra;
             File contenedor = new File(ubicacion);
             File [] registros = contenedor.listFiles();
             for(int i = 0; i<registros.length; i++){
@@ -99,7 +113,7 @@ public class Pantalla extends javax.swing.JFrame {
                     FileInputStream fis = new FileInputStream(url);
                     Properties mostrar = new Properties();
                     mostrar.load(fis);
-                    String Filas [] = {registros[i].getName().replace("."+Trabacl.getItemAt(Trabacl.getItemCount()), ""),
+                    String Filas [] = {registros[i].getName().replace("."+carpetatratamiento.getSelectedItem(), ""),
                         mostrar.getProperty("Nombre"),
                         mostrar.getProperty("Apellido"),
                         mostrar.getProperty("Telefono")
@@ -114,6 +128,15 @@ public class Pantalla extends javax.swing.JFrame {
         
         //for(int i = 0; i<)
     }
+
+    public DefaultTableModel getDtm() {
+        return dtm;
+    }
+
+    public JTable getjTable3() {
+        return jTable3;
+    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -162,11 +185,11 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Nombrecliente = new javax.swing.JTextField();
-        carpetatratamiento = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        carpetatratamiento = new javax.swing.JComboBox<>();
         Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -518,6 +541,16 @@ public class Pantalla extends javax.swing.JFrame {
 
             }
         ));
+        jTable3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable3.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable3MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable3MouseReleased(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTable3);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -534,8 +567,11 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        carpetatratamiento.setMaximumRowCount(5);
+        carpetatratamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Masaje", "Podologia", "Masoterapia", "Colorimetria" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -556,7 +592,7 @@ public class Pantalla extends javax.swing.JFrame {
                         .addGap(90, 90, 90)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Nombrecliente)
-                            .addComponent(carpetatratamiento))))
+                            .addComponent(carpetatratamiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(366, 366, 366)
@@ -568,19 +604,15 @@ public class Pantalla extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(Nombrecliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
+                        .addComponent(Nombrecliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9))
+                .addGap(35, 35, 35)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(carpetatratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1)
+                    .addComponent(carpetatratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(12, 12, 12)
@@ -648,7 +680,7 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_AddclActionPerformed
 
     private void actualtabla(){
-        String ubicacion = System.getProperty("user.dir")+barra+carpetatratamiento.getText()+barra+Nombrecliente.getText()+barra;
+        String ubicacion = System.getProperty("user.dir")+barra+carpetatratamiento.getSelectedItem()+barra+Nombrecliente.getText()+barra;
         File contenedor = new File(ubicacion);
         dtm.setRowCount(0);
         regTabla();
@@ -657,6 +689,35 @@ public class Pantalla extends javax.swing.JFrame {
         // TODO add your handling code here:
         actualtabla();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    /**/
+    public int carpetatrata(){
+        return carpetatratamiento.getSelectedIndex();
+    }
+    private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
+        // TODO add your handling code here:
+
+        //System.out.println(evt.);
+        try{
+            this.Fichas = true;
+        }catch(Exception e){
+            
+        }
+        
+//        
+//        int filaselec = this.jTable3.getSelectedRow();//id de fila
+//        try{
+//            
+//        }catch(Exception e){
+//            
+//        }
+        
+    }//GEN-LAST:event_jTable3MousePressed
+
+    private void jTable3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseReleased
+        // TODO add your handling code here:
+        this.Fichas = true;
+    }//GEN-LAST:event_jTable3MouseReleased
 
     //private boolean OK;
 
@@ -703,7 +764,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JLabel RUTE;
     private javax.swing.JComboBox<String> Trabacl;
     private javax.swing.JButton Volver;
-    private javax.swing.JTextField carpetatratamiento;
+    private javax.swing.JComboBox<String> carpetatratamiento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
