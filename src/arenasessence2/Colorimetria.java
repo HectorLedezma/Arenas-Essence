@@ -146,16 +146,14 @@ String tel;
 String edad;
 String fecha;
 String hora;
-String otro;
 
-    public void Pase(String nombre, String apellido, String tel,String edad,String fecha,String hora,String otro){
+    public void Pase(String nombre, String apellido, String tel,String edad,String fecha,String hora){
         this.nombre = nombre;
         this.apellido = apellido;
         this.tel = tel;
         this.edad = edad;
         this.fecha = fecha;
         this.hora = hora;
-        this.otro = otro;
     }
     public boolean isFincl() {
         return fincl;

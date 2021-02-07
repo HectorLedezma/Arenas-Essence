@@ -25,19 +25,20 @@ public class ArenasEssence2 {
         boolean contiex = true;
         boolean contigen =false;
         while(contigen == false){
+            
             while(conti0 == false){
                 pri.setVisible(true);
                 if(pri.Lopa == true){
                     pri.setVisible(false);
                     ppl.setVisible(true);
-                    //System.out.println("Nombre: "+pri.nombre);
                     ppl.datosEmpleado(pri.nombre, pri.apellido, pri.rut, pri.telefono);
                     conti0 = true;
+//                    ppl.autollenar();
                     conti1 = false;
-                    
                     pri.Lopa = false;
                 }
             }
+//            ppl.autollenar(ppl.isVisible());
             while(conti1 == false){
                 ppl.setVisible(true);
                 contiex = true;
@@ -49,12 +50,13 @@ public class ArenasEssence2 {
                     ppl.volv = false;
                 }
                 if(ppl.tapa == true){
+                    
                     switch(ppl.inquisidor()){
                         case 1:
                             while(contiex == true){
                                 ppl.setVisible(false);
                                 masaje.setVisible(true);
-                                masaje.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora(), ppl.otros());
+                                masaje.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora());
                                 if(masaje.fincl == true){
                                     ppl.setOK(masaje.isOK());
                                     contiex = false;
@@ -69,7 +71,7 @@ public class ArenasEssence2 {
                             while(contiex == true){
                                 ppl.setVisible(false);
                                 podologia.setVisible(true);
-                                podologia.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora(), ppl.otros());
+                                podologia.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora());
                                 if(podologia.fincl == true){
                                     ppl.setOK(podologia.isOK());
                                     contiex = false;
@@ -84,7 +86,7 @@ public class ArenasEssence2 {
                             while(contiex == true){
                                 ppl.setVisible(false);
                                 masoterapia.setVisible(true);
-                                masoterapia.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora(), ppl.otros());
+                                masoterapia.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora());
                                 if(masoterapia.fincl == true){
                                     contiex = false;
                                     ppl.setVisible(true);
@@ -98,7 +100,7 @@ public class ArenasEssence2 {
                             while(contiex == true){
                                 ppl.setVisible(false);
                                 colorimetria.setVisible(true);
-                                colorimetria.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora(), ppl.otros());
+                                colorimetria.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora());
                                 if(colorimetria.fincl == true){
                                     contiex = false;
                                     ppl.setVisible(true);

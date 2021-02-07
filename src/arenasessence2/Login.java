@@ -24,7 +24,7 @@ public class Login extends javax.swing.JFrame {
     String rut;
     String telefono;
     public void mostrarE(){
-        File url = new File(Eubicacion+RUTL.getText()+".txt");
+        File url = new File(Eubicacion+RUTL.getText()+".log");
         if(RUTL.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "El RUT es ovligatorio");
         }else{
@@ -39,9 +39,9 @@ public class Login extends javax.swing.JFrame {
                         RUTL.setText("");
                         Keys.setText("");
                         nombre = mostrar.getProperty("Nombre");
-                        apellido = mostrar.getProperty("Nombre");
-                        rut = mostrar.getProperty("Nombre");
-                        telefono = mostrar.getProperty("Nombre");
+                        apellido = mostrar.getProperty("Apellido");
+                        rut = mostrar.getProperty("RUT");
+                        telefono = mostrar.getProperty("Telefono");
                     }else{
                         JOptionPane.showMessageDialog(rootPane, "contraseña incorrecta");
                     }                    
@@ -63,7 +63,7 @@ public class Login extends javax.swing.JFrame {
         System.out.println("OK");
     }
     public void crearE(){
-        String Earchivo = ERUT.getText()+".Log";
+        String Earchivo = ERUT.getText()+".log";
         File Eubi = new File(Eubicacion);
         File Earchi = new File(Eubicacion+Earchivo);
         

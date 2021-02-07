@@ -339,7 +339,7 @@ public class Masoterapia extends javax.swing.JFrame {
             try {
                 crea_Ubicacion.mkdirs();
                 Formatter crea = new Formatter(ubicacion2 + Archivo);
-                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
+                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
                         "Fecha=" + hoy,
                         "hora=" + ora,
                         "Nombre=" + nombre,
@@ -348,7 +348,6 @@ public class Masoterapia extends javax.swing.JFrame {
                         "Edad=" + edad,
                         "Fecha de cita=" + fecha,
                         "Hora de cita=" + hora,
-                        "Otros=" + otro,
                         "a1="+c1(N1.isSelected()),
                         "a2="+c1(N2.isSelected()),
                         "a3="+c1(N3.isSelected()),
@@ -390,16 +389,14 @@ String tel;
 String edad;
 String fecha;
 String hora;
-String otro;
 
-    public void Pase(String nombre, String apellido, String tel,String edad,String fecha,String hora,String otro){
+    public void Pase(String nombre, String apellido, String tel,String edad,String fecha,String hora){
         this.nombre = nombre;
         this.apellido = apellido;
         this.tel = tel;
         this.edad = edad;
         this.fecha = fecha;
         this.hora = hora;
-        this.otro = otro;
     }
     public boolean isFincl() {
         return fincl;

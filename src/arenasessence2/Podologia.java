@@ -810,16 +810,14 @@ String tel;
 String edad;
 String fecha;
 String hora;
-String otro;
 
-    public void Pase(String nombre, String apellido, String tel,String edad,String fecha,String hora,String otro){
+    public void Pase(String nombre, String apellido, String tel,String edad,String fecha,String hora){
         this.nombre = nombre;
         this.apellido = apellido;
         this.tel = tel;
         this.edad = edad;
         this.fecha = fecha;
         this.hora = hora;
-        this.otro = otro;
     }
     public boolean isFincl() {
         return fincl;
@@ -976,7 +974,7 @@ String otro;
             try {
                 crea_Ubicacion.mkdirs();
                 Formatter crea = new Formatter(ubicacion2 + Archivo);
-                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
+                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
                         "Fecha=" + hoy,//1
                         "hora=" + ora,//2
                         "Nombre=" + nombre,
@@ -985,7 +983,6 @@ String otro;
                         "Edad=" + edad,
                         "Fecha de cita=" + fecha,
                         "Hora de cita=" + hora,
-                        "Otros=" + otro,//9
                         "HTA="+HTA.getText(),//10
                         "DM="+DM.getText(),//11
                         "Cardiopatia="+Cardiopatia.getText(),//12

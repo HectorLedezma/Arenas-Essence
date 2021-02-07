@@ -1,15 +1,20 @@
 package arenasessence2;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 public class Masaje extends javax.swing.JFrame {
 
     public Masaje() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -34,8 +39,6 @@ public class Masaje extends javax.swing.JFrame {
         Cirugias = new javax.swing.JTextField();
         Tanticon = new javax.swing.JTextField();
         Medicamentos = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Otros = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         Tmasaje = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -50,6 +53,8 @@ public class Masaje extends javax.swing.JFrame {
         Gluteos = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         Brazos = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Otros = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -155,10 +160,6 @@ public class Masaje extends javax.swing.JFrame {
             }
         });
 
-        Otros.setColumns(20);
-        Otros.setRows(5);
-        jScrollPane1.setViewportView(Otros);
-
         jLabel10.setText("Tipo de masaje");
 
         jLabel11.setText("Peso");
@@ -172,6 +173,15 @@ public class Masaje extends javax.swing.JFrame {
         jLabel15.setText("gluteos");
 
         jLabel16.setText("Brazos");
+
+        Otros.setColumns(20);
+        Otros.setRows(5);
+        Otros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Enter(evt);
+            }
+        });
+        jScrollPane3.setViewportView(Otros);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -201,7 +211,7 @@ public class Masaje extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                                 .addGap(79, 79, 79))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -225,14 +235,14 @@ public class Masaje extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Cardiacos)
+                            .addComponent(Cardiacos, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                             .addComponent(Circulatorios)
                             .addComponent(Digestibos)
                             .addComponent(Ginecologicos)
                             .addComponent(Cirugias)
                             .addComponent(Tanticon)
                             .addComponent(Medicamentos)
-                            .addComponent(jScrollPane1))))
+                            .addComponent(jScrollPane3))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -269,8 +279,8 @@ public class Masaje extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(Tmasaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -459,23 +469,23 @@ public class Masaje extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-boolean fincl = false;
+
+    
+    boolean fincl = false;
     private String nombre;
     private String apellido;
     private String tel;
     private String edad;
     private String fecha;
     private String hora;
-    private String otro;
 
-    public void Pase(String nombre, String apellido, String tel, String edad, String fecha, String hora, String otro) {
+    public void Pase(String nombre, String apellido, String tel, String edad, String fecha, String hora) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tel = tel;
         this.edad = edad;
         this.fecha = fecha;
         this.hora = hora;
-        this.otro = otro;
     }
 
     public boolean isFincl() {
@@ -525,10 +535,11 @@ boolean fincl = false;
         if (crea_archivo.exists()) {
             //JOptionPane.showMessageDialog(rootPane, "Por favor ingrese la fecha de hoy");
         } else {
+            //
             try {
                 crea_Ubicacion.mkdirs();
                 Formatter crea = new Formatter(ubicacion2 + Archivo);
-                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
+                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
                         "Fecha=" + hoy,
                         "hora=" + ora,
                         "Nombre=" + nombre,
@@ -537,7 +548,6 @@ boolean fincl = false;
                         "Edad=" + edad,
                         "Fecha de cita=" + fecha,
                         "Hora de cita=" + hora,
-                        "Otros=" + otro,
                         "Cardiacos=" + Cardiacos.getText(),
                         "Circulatorios=" + Circulatorios.getText(),
                         "Digestivos=" + Digestibos.getText(),
@@ -545,7 +555,7 @@ boolean fincl = false;
                         "Cirugias=" + Cirugias.getText(),
                         "T. anticonsept=" + Tanticon.getText(),
                         "Medicamentos=" + Medicamentos.getText(),
-                        "Otros=" + Otros.getText(),
+                        "Otros=<html>"+Otros.getText()+"<html>",
                         "T. Masaje=" + Tmasaje.getText(),
                         "Peso=" + Peso.getText(),
                         "Talla=" + Talla.getText(),
@@ -607,6 +617,20 @@ boolean fincl = false;
         // TODO add your handling code here:
         this.fincl = true;
     }//GEN-LAST:event_VolverActionPerformed
+
+    String ntxt;
+    int lineas = 1;
+    private void Enter(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Enter
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            this.ntxt = "<html>"+Otros.getText()+"<html>";
+            Otros.setText(ntxt+"<p>");
+//            String [] area = new String[lineas];
+//            area[lineas-1] = Otros.getText();
+//            this.ntxt = area[lineas-1]+"<p>";
+//            lineas = lineas + 1;
+        }
+    }//GEN-LAST:event_Enter
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -671,7 +695,7 @@ boolean fincl = false;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
