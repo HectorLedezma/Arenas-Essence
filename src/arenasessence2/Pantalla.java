@@ -1,12 +1,31 @@
 package arenasessence2;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Formatter;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +35,7 @@ public class Pantalla extends javax.swing.JFrame {
     public Pantalla() {
         initComponents();
         this.setLocationRelativeTo(null);
-       // Editar.removeAllItems();
+        verproductos();
     }
     
     boolean volv;
@@ -99,8 +118,10 @@ public class Pantalla extends javax.swing.JFrame {
     public int inquisidor(){//proceso para pedir el indice del "Reserva para"
         return Trabacl.getSelectedIndex();
     }
-    
+    //metodo para manejar los datos del usuario/empleado
+    private String RUTEM;
     public void datosEmpleado(String nombreE, String Apellido, String rut, String tele){
+        this.RUTEM = rut;
         NomE.setText("Nombre: "+nombreE);
         ApeE.setText("Apellido: "+Apellido);
         RUTE.setText("RUT: "+rut);
@@ -112,7 +133,8 @@ public class Pantalla extends javax.swing.JFrame {
     String [] Titulos2 = {"Nombre","Apellido","Telefono"};
     DefaultTableModel dtm2 = new DefaultTableModel(null,Titulos2);
     
-    //String masaje = System.getProperty("user,dir")+barra;
+    String [] TitulosPro = {"ID","Nombre","Contenido","Precio"};
+    DefaultTableModel dtmp = new DefaultTableModel(null,TitulosPro);
     
     
     public void setfich(boolean fic){
@@ -210,6 +232,7 @@ public class Pantalla extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         inventario = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -220,8 +243,9 @@ public class Pantalla extends javax.swing.JFrame {
         Unid = new javax.swing.JComboBox<>();
         PRECIO = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        AdIMG = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
+        FotoProd = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         ApeE = new javax.swing.JLabel();
         NomE = new javax.swing.JLabel();
@@ -395,9 +419,9 @@ public class Pantalla extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(18, 18, 18)
-                                .addComponent(Editar, 0, 137, Short.MAX_VALUE)
+                                .addComponent(Editar, 0, 147, Short.MAX_VALUE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Selec, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
+                                .addComponent(Selec, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
                             .addComponent(Addcl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,7 +445,7 @@ public class Pantalla extends javax.swing.JFrame {
                                     .addComponent(Nombcl)
                                     .addComponent(Apcl, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(Cellcl)
-                                    .addComponent(Trabacl, 0, 360, Short.MAX_VALUE)
+                                    .addComponent(Trabacl, 0, 375, Short.MAX_VALUE)
                                     .addComponent(Fechcl)
                                     .addComponent(Hrcl)
                                     .addComponent(produc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -612,13 +636,22 @@ public class Pantalla extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(inventario);
 
+        jButton6.setText("Actualizar Tabla");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(187, 187, 187)
-                .addComponent(jScrollPane3)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
                 .addGap(169, 169, 169))
         );
         jPanel6Layout.setVerticalGroup(
@@ -626,7 +659,9 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                .addGap(224, 224, 224))
+                .addGap(33, 33, 33)
+                .addComponent(jButton6)
+                .addGap(168, 168, 168))
         );
 
         principal.addTab("Productos y servicios", jPanel6);
@@ -649,17 +684,30 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Añadir Foto");
+        AdIMG.setText("Añadir Foto");
+        AdIMG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdIMGActionPerformed(evt);
+            }
+        });
+
+        FotoProd.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(FotoProd, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(FotoProd, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -680,10 +728,10 @@ public class Pantalla extends javax.swing.JFrame {
                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(353, 353, 353))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AdIMG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(311, 311, 311)))
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(ConNet)
                         .addGap(18, 18, 18)
@@ -712,7 +760,7 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(AdIMG)
                         .addGap(0, 210, Short.MAX_VALUE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -750,6 +798,11 @@ public class Pantalla extends javax.swing.JFrame {
         jButton1.setText("Editar");
 
         jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -857,14 +910,14 @@ public class Pantalla extends javax.swing.JFrame {
     
     public 
     boolean existe;
+    //metodo para guardar datos comunes del cliente
     private void ward(){
         setUbicacionparaCBox(System.getProperty("user.dir")+barra+Trabacl.getItemAt(Trabacl.getSelectedIndex())+barra+"registros"+barra); 
         String persona = Nombcl.getText()+".registro";
         File crea_Ubicacion = new File(ubicacionparaCBox);
         File crea_archivo = new File(ubicacionparaCBox + persona);
-//        
         if(crea_archivo.exists()){
-            //crea_archivo.renameTo(crea_archivo);
+            Editcl();
         }else{
             try {
                 crea_Ubicacion.mkdirs();
@@ -933,7 +986,6 @@ public class Pantalla extends javax.swing.JFrame {
     }
     
     private void Cambio(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Cambio
-        // TODO add your handling code here:
         autollenar();
         if(Trabacl.getSelectedIndex() == 5){
             jLabel10.setEnabled(true);produc.setEnabled(true);
@@ -944,7 +996,6 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_Cambio
 
     private void SelecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelecActionPerformed
-        // TODO add your handling code here:
         setUbicacionparaCBox(System.getProperty("user.dir")+barra+Trabacl.getItemAt(Trabacl.getSelectedIndex())+barra+"registros"+barra);
         String arfile = (String) Editar.getSelectedItem();
         File regis = new File(ubicacionparaCBox+arfile+".registro");
@@ -953,6 +1004,7 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_SelecActionPerformed
 
     String Tnom;
+    //metodo para mostrar la tabla de cientes
     private void regeneral(){
         if(Tratamiento.getSelectedIndex() != 0){
             String ubicacion = System.getProperty("user.dir")+barra+Tratamiento.getSelectedItem().toString()+barra+"registros"+barra;
@@ -965,7 +1017,6 @@ public class Pantalla extends javax.swing.JFrame {
                     Properties mostrar = new Properties();
                     mostrar.load(fis);
                     String filas [] = {registros[i].getName().replace(".registro", ""),mostrar.getProperty("Apellido"), mostrar.getProperty("Telefono")};
-                    //this.Tnom = registros[i].getName().replace(".registro", "");
                     dtm2.addRow(filas);
                 }catch(Exception e){
 
@@ -976,11 +1027,59 @@ public class Pantalla extends javax.swing.JFrame {
     }
     
     private void recarga(){
-        String ubicacion = System.getProperty("user.dir")+barra+Tratamiento.getSelectedItem().toString()+barra+"registros"+barra;
-        File contenedor = new File(ubicacion);
-        File [] registros = contenedor.listFiles();
         dtm2.setRowCount(0);
         regeneral();
+    }
+    
+    private void Editcl(){
+        String regi = System.getProperty("user.dir")+barra+Trabacl.getItemAt(Trabacl.getSelectedIndex())+barra+"registros"+barra;
+        try{
+            FileWriter Ya = new FileWriter(regi+Nombcl.getText()+".registro");
+            String name = "Nombre=";
+            String Lname = "Apellido=";
+            String Telef = "Telefono=";
+            String Age = "Edad=";
+            PrintWriter zaWARDo = new PrintWriter(Ya);
+            zaWARDo.println(name+Nombcl.getText());
+            zaWARDo.println(Lname+Apcl.getText());
+            zaWARDo.println(Telef+Cellcl.getText());
+            zaWARDo.println(Age+Edadcl.getText());
+            Ya.close();
+        }catch(Exception e){
+            
+        }
+    }
+    //metodo para eliminar usuario de los registros
+    private void Elimemp(){
+        System.out.println("RUT --> "+RUTEM);
+        String SCarpusua =System.getProperty("user.dir")+barra+"Personal"+barra;
+        File Carpusua = new File(SCarpusua+RUTEM+".log");
+        String confirma [] = {"Eliminar","Cancelar"};
+        if(Carpusua.exists()){
+            try{
+                FileInputStream cerrar = new FileInputStream(Carpusua);
+                cerrar.close();
+                System.gc();
+                int seguro = JOptionPane.showOptionDialog(rootPane, "¿Estas seguro de eliminar el registro?",
+                        "Eliminar", 0, 0, null, confirma, null);
+                switch(seguro){
+                    case JOptionPane.YES_OPTION:
+                        Carpusua.delete();
+                        JOptionPane.showMessageDialog(rootPane, "Has sido eliminado de los registros de empleados \n"
+                                + "Adios :)");
+                        this.volv = true;
+                        break;
+                    case JOptionPane.NO_OPTION:
+                        
+                        break;    
+                }
+                
+            }catch(Exception e){
+                
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "El usuario ya no existe");
+        }
     }
     
     private void IrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IrActionPerformed
@@ -1012,6 +1111,14 @@ public class Pantalla extends javax.swing.JFrame {
 
     String carpetaproductos = System.getProperty("user.dir")+barra+"Productos"+barra;
     File procuctosfol = new File(carpetaproductos);
+
+    public String getCarpetaproductos() {
+        return carpetaproductos;
+    }
+
+    public File getProcuctosfol() {
+        return procuctosfol;
+    }
     File procuctosnom [] = procuctosfol.listFiles();
 
     public File[] getProcuctosnom() {
@@ -1019,8 +1126,12 @@ public class Pantalla extends javax.swing.JFrame {
     }
     
     int Pnom;
+    //metodo para guardar un nuevo producto
+    String imagenesGeneral = System.getProperty("user.dir")+barra+"Imagenes"+barra;
+    String imagenesProd = imagenesGeneral+"Producctos"+barra;
+    File imgP  = new File(imagenesProd);
     private void nuevoprodu(){
-        File PCarnom [] = getProcuctosnom();
+        File PCarnom [] = procuctosfol.listFiles();
         if(PCarnom.equals(null)){
             this.Pnom = 0;
         }else{
@@ -1030,31 +1141,140 @@ public class Pantalla extends javax.swing.JFrame {
         String PnomS = Pnom+".Productos";
         System.out.println("el archivo se llamara "+PnomS);
         File productosfil = new File(carpetaproductos+PnomS);
-        if(productosfil.exists()){
+        String Imanom = Pnom+".jpg";
+        
+        //File img1  = new File(imagenesProd+Imanom);
+        if(productosfil.exists() /*&& img1.exists()*/){
             
         }else{
+            
+            System.out.println("Carpeta Imagenes --> "+imgP.getPath());
             try{
                 procuctosfol.mkdirs();
+                
+                imgP.mkdirs();
                 Formatter crea = new Formatter(carpetaproductos + PnomS);
-                crea.format("%s\r\n%s\r\n%s\r\n%s",
+                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s",
                         "ID="+PnomS.replace(".Productos", ""),
                         "Nombre="+Pronom.getText(),
                         "Cantidad="+ConNet.getText()+Unid.getSelectedItem(),
-                        "Precio="+PRECIO.getText());
+                        "Precio="+PRECIO.getText(),
+                        "Imagen="+imagenesProd+Pnom+".jpg");
                 crea.close();
+                
+                ImageIcon imageP = (ImageIcon) FotoProd.getIcon();
+                BufferedImage IconoSagrado = new BufferedImage( imageP.getIconWidth(),
+                                                                imageP.getIconHeight(),
+                                                                BufferedImage.TYPE_INT_RGB);
+                Graphics2D g2 = IconoSagrado.createGraphics();
+                g2.drawImage(imageP.getImage(), 0, 0,imageP.getImageObserver());
+                g2.dispose();
+                ImageIO.write(IconoSagrado,"jpg",new File(imgP.getPath()+barra+Pnom+".jpg"));
+                
+                //System.out.println("La imagen esta en: "+img.getPath());
                 JOptionPane.showMessageDialog(rootPane, "Producto añadido");
-            }catch(Exception e){
+                recarinve();
+            }catch(IOException e){
                 JOptionPane.showMessageDialog(rootPane, "Error: "+e);
+                System.out.println("Error: "+e);
             }
         }        
     }
+    String Extencion;
+    ImageIcon imag = null;
+    private void recarinve(){
+        dtmp.setRowCount(0);
+        verproductos();
+    }
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
         System.out.println("Accediendo al metodo nuevoprodu()");
         nuevoprodu();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        recarinve();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Elimemp();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    
+    
+    File imgimpor;
+    int anchres;
+    int largres;
+    String RutaIMG;
+    private void AdIMGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdIMGActionPerformed
+        JFileChooser PIMG = new JFileChooser();
+        PIMG.showOpenDialog(this);
+        File foto = PIMG.getSelectedFile();
+        if(foto != null){
+            if( foto.getName().contains(".jpg") || 
+                foto.getName().contains(".png") ||
+                foto.getName().contains(".jpeg") ||
+                foto.getName().contains(".gif")){
+                this.RutaIMG = foto.getPath();
+                System.out.println(foto.getPath());
+                ImageIcon imag1 = new ImageIcon(foto.getPath());
+                int anchoO = FotoProd.getHeight();
+                int largoO = FotoProd.getWidth();
+                int ancho = imag1.getIconHeight();
+                int largo = imag1.getIconWidth();
+                if(ancho == largo){
+                    this.anchres = largoO;
+                    this.largres = largoO;
+                }else{
+                    if(ancho > anchoO){
+                        this.anchres = ancho-(ancho-anchoO);
+                    }
+                    if(ancho < anchoO){
+                        this.anchres = anchoO-(anchoO-ancho);
+                    }
+                    if(ancho == anchoO){
+                        this.anchres = ancho;
+                    }
+                    if(largo > largoO){
+                        this.largres = largo-(largo-largoO);
+                    }
+                    if(largo < largoO){
+                        this.largres = largoO-(largoO-largo);
+                    }
+                }
+                System.out.println(" --> "+anchres+"x"+largres);
+                System.out.println(" --> "+anchoO+"x"+largoO);
+                System.out.println(" --> "+ancho+"x"+largo);
+                Image imag0 = new ImageIcon(foto.getPath()).getImage();
+                this.imag = new ImageIcon(imag0.getScaledInstance(largres, anchres, Image.SCALE_SMOOTH));
+                FotoProd.setIcon(imag);
+                //foto.close();
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar Archivos de imagen \n (JPG o PNG)");
+            }
+        }
+    }//GEN-LAST:event_AdIMGActionPerformed
+
+    private void verproductos(){
+        for(int i = 0;i<procuctosnom.length;i++){
+            File url = new File(carpetaproductos+procuctosnom[i].getName());
+            try{
+                FileInputStream fis = new FileInputStream(url);
+                Properties mostrar = new Properties();
+                mostrar.load(fis);
+                String Filas [] = {procuctosnom[i].getName().replace(".Productos", ""),
+                                   mostrar.getProperty("Nombre"),
+                                   mostrar.getProperty("Cantidad"),
+                                   mostrar.getProperty("Precio")
+                };
+                dtmp.addRow(Filas);
+            }catch(Exception e){
+                
+            }
+        }
+        inventario.setModel(dtmp);
+    }
+    
     /*
     
     */
@@ -1062,24 +1282,35 @@ public class Pantalla extends javax.swing.JFrame {
     String apel;
     String cell;
     String edad;
-    private void setea(String nom,String apel,String cell,String edad){
-        this.Nombcl.setText(nom);this.Apcl.setText(apel);this.Cellcl.setText(cell);this.Edadcl.setText(edad);
-    }
+    
+//metodos para llenar los JTextField's de "Nuevo cliente"
     private void mostrar(File reg){
         System.out.println("ejecutando metodo");
+        Properties mostrar = new Properties();
         try{
-            Properties mostrar = new Properties();
             mostrar.load(new FileReader(reg));
             System.out.println("momento...");
-            this.nom = mostrar.getProperty("Nombre");
-            this.apel = mostrar.getProperty("Apellido");
-            this.cell = mostrar.getProperty("Telefono");
-            this.edad = mostrar.getProperty("Edad");
-            System.out.println("Nombre --> "+nom);
-            System.out.println("Apellido --> "+apel);
-            System.out.println("Cell --> "+cell);
-            System.out.println("Edad -->"+edad);
-            setea(nom,apel,cell,edad);
+            System.out.println("...");
+            for(int i = 0;i<8;i++){
+                switch(i){
+                    case 0: Nombcl.setText(mostrar.getProperty("Nombre"));
+                            System.out.println("Nombre OK: "+mostrar.getProperty("Nombre"));
+                            break;
+                    case 1:break;
+                    case 2: Apcl.setText(mostrar.getProperty("Apellido"));
+                            System.out.println("Apellido OK: "+mostrar.getProperty("Apellido"));
+                            break;
+                    case 3:break;
+                    case 4: Cellcl.setText(mostrar.getProperty("Telefono"));
+                            System.out.println("Cell OK: "+mostrar.getProperty("Telefono"));
+                            break;
+                    case 5:break;
+                    case 6: Edadcl.setText(mostrar.getProperty("Edad"));
+                            System.out.println("Edad OK: "+mostrar.getProperty("Edad"));
+                            break;
+                    case 7:break;
+                }
+            }
             System.out.println("Esta en: "+reg.getPath()); 
         }catch(Exception e){
             System.out.println(e);
@@ -1116,6 +1347,7 @@ public class Pantalla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AdIMG;
     private javax.swing.JButton Addcl;
     private javax.swing.JTextField Apcl;
     private javax.swing.JLabel ApeE;
@@ -1125,6 +1357,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JTextField Edadcl;
     private javax.swing.JComboBox<String> Editar;
     private javax.swing.JTextField Fechcl;
+    private javax.swing.JLabel FotoProd;
     private javax.swing.JTextField Hrcl;
     private javax.swing.JButton Ir;
     private javax.swing.JLabel NomE;
@@ -1145,7 +1378,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

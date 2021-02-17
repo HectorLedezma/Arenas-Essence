@@ -72,8 +72,7 @@ public class Login extends javax.swing.JFrame {
         }else{
             try{
                 if(Earchi.exists()){
-                JOptionPane.showMessageDialog(rootPane, "La persona ya esta registrada \n"
-                        + "puedes volver");
+                JOptionPane.showMessageDialog(rootPane, "La persona ya esta registrada");
                 }else{
                     Eubi.mkdirs();
                     Formatter crea = new Formatter(Eubicacion+Earchivo); 
