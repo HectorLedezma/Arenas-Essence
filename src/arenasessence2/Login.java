@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Formatter;
 import java.util.Properties;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
