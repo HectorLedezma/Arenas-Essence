@@ -2,6 +2,7 @@ package arenasessence2;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.TextField;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
@@ -37,7 +38,12 @@ public class Pantalla extends javax.swing.JFrame {
     public Pantalla() {
         initComponents();
         this.setLocationRelativeTo(null);
-        verproductos();
+        try{
+            verproductos(procuctosnom);
+        }catch(Exception e){
+            
+        }
+        
     }
     
     boolean volv;
@@ -65,21 +71,33 @@ public class Pantalla extends javax.swing.JFrame {
     //metodo para llenar automaticamente los campos de "nuevo cliente"
     public void autollenar(){
         Editar.removeAllItems();
+        System.out.println("elementos borrados");
         if(Trabacl.getSelectedIndex() != 0){
-            Editar.setEnabled(true);
-            Selec.setEnabled(true);
-            setUbicacionparaCBox(System.getProperty("user.dir")+barra+Trabacl.getItemAt(Trabacl.getSelectedIndex())+barra+"registros");
+            setUbicacionparaCBox(System.getProperty("user.dir")+barra+Trabacl.getItemAt(Trabacl.getSelectedIndex())+barra+"registros"+barra);
+            System.out.println("Buscando en "+ubicacionparaCBox);
             File contenedor = new File(ubicacionparaCBox);
             File [] regigigas = contenedor.listFiles();
-            if(regigigas != null){
-                setContenedor(contenedor);
-                setRegigigas(regigigas);
+            try{
                 System.out.println("Hay: "+regigigas.length+ " archivos");
-                for (int i = 0;i <  regigigas.length;i++) {
-                    if(regigigas[i].exists()){
-                        Editar.addItem(regigigas[i].getName().replace(".registro", ""));
+                if(contenedor.listFiles() != null){
+                    Editar.setEnabled(true);
+                    Selec.setEnabled(true);
+                    setContenedor(contenedor);
+                    setRegigigas(regigigas);                
+                    for (int i = 0;i <  regigigas.length;i++) {
+                        if(regigigas[i].exists()){
+                            Editar.addItem(regigigas[i].getName().replace(".registro", ""));
+                        }
                     }
+                }else{
+                    Editar.removeAllItems();
+                    Editar.setEnabled(false);
+                    Selec.setEnabled(false);
                 }
+            }catch(Exception e){
+                Editar.removeAllItems();
+                Editar.setEnabled(false);
+                Selec.setEnabled(false);
             }
         }else{
             Editar.setEnabled(false);
@@ -380,6 +398,11 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel12.setText("Seleccionar persona \nya registrada");
 
         Editar.setEnabled(false);
+        Editar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EditarItemStateChanged(evt);
+            }
+        });
 
         Selec.setText("Selecionar");
         Selec.setEnabled(false);
@@ -930,7 +953,7 @@ public class Pantalla extends javax.swing.JFrame {
     //metodo para guardar datos comunes del cliente
     private void ward(){
         setUbicacionparaCBox(System.getProperty("user.dir")+barra+Trabacl.getItemAt(Trabacl.getSelectedIndex())+barra+"registros"+barra); 
-        String persona = Nombcl.getText()+".registro";
+        String persona = Nombcl.getText()+" "+Apcl.getText()+".registro";
         File crea_Ubicacion = new File(ubicacionparaCBox);
         File crea_archivo = new File(ubicacionparaCBox + persona);
         if(crea_archivo.exists()){
@@ -966,8 +989,8 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_AddclActionPerformed
 
     //metodo para actualizar la tabla de la pantalla "Buscar cliente"
-    private void actualtabla(){
-        String ubicacion = System.getProperty("user.dir")+barra+carpetatratamiento.getSelectedItem()+barra+Nombrecliente.getText()+barra;
+    private void actualtabla(String car,String nom){
+        String ubicacion = System.getProperty("user.dir")+barra+car+barra+nom+barra;
         File contenedor = new File(ubicacion);
         dtm.setRowCount(0);
         regTabla();
@@ -976,7 +999,7 @@ public class Pantalla extends javax.swing.JFrame {
     
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        actualtabla();
+        actualtabla(carpetatratamiento.getSelectedItem().toString(),Nombrecliente.getText());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public int carpetatrata(){
@@ -1004,6 +1027,7 @@ public class Pantalla extends javax.swing.JFrame {
     }
     
     private void Cambio(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Cambio
+        System.out.println("entrando al metodo autollenar()");
         autollenar();
         if(Trabacl.getSelectedIndex() == 5){
             jLabel10.setEnabled(true);produc.setEnabled(true);
@@ -1037,7 +1061,7 @@ public class Pantalla extends javax.swing.JFrame {
                     String filas [] = {registros[i].getName().replace(".registro", ""),mostrar.getProperty("Apellido"), mostrar.getProperty("Telefono")};
                     dtm2.addRow(filas);
                 }catch(Exception e){
-
+                    System.out.println("--> "+e);
                 }
             }
             Tmasaje.setModel(dtm2);
@@ -1115,6 +1139,7 @@ public class Pantalla extends javax.swing.JFrame {
         // TODO add your handling code here:
         Nombrecliente.setText(Tmasaje.getValueAt(Tmasaje.getSelectedRow(),0).toString());
         carpetatratamiento.setSelectedIndex(Tratamiento.getSelectedIndex());
+        actualtabla(Tmasaje.getValueAt(Tmasaje.getSelectedRow(),0).toString(),Tratamiento.getItemAt(Tratamiento.getSelectedIndex()));
         JOptionPane.showMessageDialog(rootPane, "Vaya a la pestaña de \"Buscar Cliente\"\n"
                 + "y presione \"Buscar\"");
     }//GEN-LAST:event_press
@@ -1203,7 +1228,7 @@ public class Pantalla extends javax.swing.JFrame {
     ImageIcon imag = null;
     private void recarinve(){
         dtmp.setRowCount(0);
-        verproductos();
+        verproductos(procuctosnom);
     }
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1274,8 +1299,15 @@ public class Pantalla extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AdIMGActionPerformed
 
-    private void verproductos(){
-        for(int i = 0;i<procuctosnom.length;i++){
+    private void EditarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EditarItemStateChanged
+        // TODO add your handling code here:
+        setI(0);
+        reseteo(jPanel12);
+        System.out.println("Reseteado");
+    }//GEN-LAST:event_EditarItemStateChanged
+
+    private void verproductos(File[] files){
+        for(int i = 0;i<files.length;i++){
             File url = new File(carpetaproductos+procuctosnom[i].getName());
             try{
                 FileInputStream fis = new FileInputStream(url);
@@ -1303,33 +1335,34 @@ public class Pantalla extends javax.swing.JFrame {
     String edad;
     
 //metodos para llenar los JTextField's de "Nuevo cliente"
-    String[] Campos = new String [4];
-    JTextField[] CamposVacio = new JTextField[4];
-    
+    int i;
+
+    public void setI(int i) {
+        this.i = i;
+    }
+    String[] regcl = new String[4];
     private void mostrar(File reg){
-        
+        System.out.println("Indice = "+i);
+        JTextField [] CamposVacio = {Nombcl,Apcl,Cellcl,Edadcl};
         System.out.println("ejecutando metodo");
         Properties mostrar = new Properties();
         try{
-            mostrar.load(new FileReader(reg));
             System.out.println("momento...");
-            System.out.println("...");
-            Campos[0] = mostrar.getProperty("Nombre");
-            Campos[1] = mostrar.getProperty("Apellido");
-            Campos[2] = mostrar.getProperty("Telefono");
-            Campos[3] = mostrar.getProperty("Edad");
-            CamposVacio[0] = Nombcl;
-            CamposVacio[1] = Apcl;
-            CamposVacio[2] = Cellcl;
-            CamposVacio[3] = Edadcl;
-            for(int i = 0;i<4;i++){
-                CamposVacio[i].setText(Campos[i]);
-                System.out.println(Campos[i]+" seteado en "+CamposVacio[i].getName());
-            }
+            System.out.println("importando informacion de "+reg.getPath());
+            mostrar.load(new FileReader(reg));
+            String[] Campos = {Editar.getSelectedItem().toString(),mostrar.getProperty("Apellido"),mostrar.getProperty("Telefono"),mostrar.getProperty("Edad")};
+            CamposVacio[i].setText(Campos[i]);
+            System.out.println(Campos[i]+" seteado en Campo "+i);
+            System.out.println("Seteo "+(i+1)+" completado");
+            JOptionPane.showMessageDialog(rootPane, "Dato importado, presiona otra vez \n"
+                    + "el boton para importar el siguiente dato");
             
-            System.out.println("Esta en: "+reg.getPath()); 
+            setI(i+1);
+            if(i == Campos.length){
+                JOptionPane.showMessageDialog(rootPane, "Todos los datos fueron importados con exito");
+            } 
         }catch(Exception e){
-            System.out.println(e);
+            JOptionPane.showMessageDialog(rootPane, "Todos los datos fueron importados con exito");
         }
     }
     
@@ -1345,11 +1378,12 @@ public class Pantalla extends javax.swing.JFrame {
         if(OK == true){
             ward();
             Editar.removeAllItems();
-            registeel = conten.listFiles();
+            //registeel = conten.listFiles();
             if(Tratamiento.getSelectedIndex() != 0){
                 recarga();
             }
             reseteo(NCL);
+            reseteo(jPanel12);
         }
     }
     public boolean volv(){

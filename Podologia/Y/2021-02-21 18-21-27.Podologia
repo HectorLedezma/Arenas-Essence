@@ -4,10 +4,10 @@ Nombre=Y
 Apellido=Y
 Telefono=Y
 Edad=Y
-DireccY
-MailY
-CiudY
-NaciY
+Direcc=Y
+Mail=Y
+Ciud=Y
+Naci=Y
 Fechadecita=YY
 Horadecita=Y
 HTA=Y
@@ -15,15 +15,17 @@ DM=YYY
 Cardiopatia=YYYYYYY
 Marcapasos=YYY
 Otros=YYYYYYYYYYYYYY	Y	Y
+Farma=YXD
+Motiv=Yq
 LimMov=No
 PulsoPedido=Ausente
 Sensivilidad=Presente
 HidratacionIZ=
 HidratacionDE=
 ColorIZ=
-ColorDE=
-OlorIZ=
-OlorDE=
+ColorDE=VERDE
+OlorIZ=XD
+OlorDE=APATA
 TemIZ=
 TemDE=
 DolorIZ=

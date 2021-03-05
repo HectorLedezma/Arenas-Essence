@@ -85,9 +85,11 @@ public class ArenasEssence2 {
                         case 3:
                             while(contiex == true){
                                 ppl.setVisible(false);
+                                masoterapia.setnomc(ppl.nombre(), ppl.apellido());
                                 masoterapia.setVisible(true);
                                 masoterapia.Pase(ppl.nombre(), ppl.apellido(), ppl.telefono(), ppl.edad(), ppl.fecha(), ppl.hora());
                                 if(masoterapia.fincl == true){
+                                    ppl.setOK(masoterapia.isOK());
                                     contiex = false;
                                     ppl.setVisible(true);
                                     masoterapia.setVisible(false);
@@ -140,6 +142,7 @@ public class ArenasEssence2 {
                                     while(podol.bolver == false){
                                         podol.setVisible(true);
                                         ppl.setVisible(false);
+                                        podol.PasaArchivo(contenedor);
                                         //System.out.println(LocalTime.now());
                                     }
                                     podol.setVisible(false);
@@ -148,7 +151,20 @@ public class ArenasEssence2 {
                                     podol.setBolver(false);
                                     ppl.getjTable3().setModel(ppl.getDtm());
                                     break;
-                                case 3:break;
+                                case 3:
+                                    while(masot.bolver == false){
+                                        
+                                        masot.setVisible(true);
+                                        ppl.setVisible(false);
+                                        masot.PasaArchivo(contenedor);
+                                        //System.out.println(LocalTime.now());
+                                    }
+                                    masot.setVisible(false);
+                                    ppl.setVisible(true);
+                                    ppl.setfich(false);
+                                    masot.setBolver(false);
+                                    ppl.getjTable3().setModel(ppl.getDtm());
+                                    break;
                                 case 4:break;
                                 default:break;
                             }

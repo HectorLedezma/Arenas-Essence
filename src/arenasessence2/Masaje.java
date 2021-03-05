@@ -1,15 +1,12 @@
 package arenasessence2;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Formatter;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Masaje extends javax.swing.JFrame {

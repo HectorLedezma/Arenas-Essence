@@ -18,6 +18,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -31,7 +32,7 @@ public class Podologia extends javax.swing.JFrame {
      */
     public Podologia() {
         initComponents();
-        jLabel15.setText(hoy);
+        
     }
 
     /**
@@ -152,6 +153,10 @@ public class Podologia extends javax.swing.JFrame {
         Descalzo = new javax.swing.JCheckBox();
         Chequeos = new javax.swing.JCheckBox();
         Watero = new javax.swing.JCheckBox();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
         jLabel84 = new javax.swing.JLabel();
         jLabel85 = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
@@ -185,6 +190,12 @@ public class Podologia extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
         Volver = new javax.swing.JButton();
         Finalizar = new javax.swing.JButton();
 
@@ -329,7 +340,7 @@ public class Podologia extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel65, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                        .addComponent(jLabel65, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(40, 40, 40))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -342,7 +353,7 @@ public class Podologia extends javax.swing.JFrame {
                         .addGap(28, 28, 28)))
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel67, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                        .addComponent(jLabel67, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(46, 46, 46))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -429,7 +440,7 @@ public class Podologia extends javax.swing.JFrame {
                         .addGap(191, 191, 191)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(jLabel78, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                                .addComponent(jLabel78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(51, 51, 51))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -442,7 +453,7 @@ public class Podologia extends javax.swing.JFrame {
                                 .addGap(39, 39, 39)))))
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                        .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(29, 29, 29))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -560,6 +571,12 @@ public class Podologia extends javax.swing.JFrame {
 
         Watero.setText("No utiliza bolsa de agua caliente en los pies");
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel18.setText("Fecha de atencion");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setText("Derivacion a:");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -589,8 +606,19 @@ public class Podologia extends javax.swing.JFrame {
                             .addComponent(Watero)
                             .addComponent(Chequeos)
                             .addComponent(Descalzo)
-                            .addComponent(Controldiab))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Controldiab)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(47, 47, 47)))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField10)
+                            .addComponent(jTextField9))))
+                .addGap(312, 312, 312))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -623,7 +651,15 @@ public class Podologia extends javax.swing.JFrame {
                     .addComponent(Watero))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Autoexamen)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         jLabel84.setText("Direccion");
@@ -798,12 +834,106 @@ public class Podologia extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel25.setText("Tratamiento");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel26.setText("Farmatologico:");
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel28.setText("Motivo de Consulta:");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(676, 676, 676))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField8))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField7)))))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout PodoPanelLayout = new javax.swing.GroupLayout(PodoPanel);
         PodoPanel.setLayout(PodoPanelLayout);
         PodoPanelLayout.setHorizontalGroup(
             PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PodoPanelLayout.createSequentialGroup()
                 .addGap(84, 84, 84)
+                .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel62)
+                    .addComponent(jLabel47)
+                    .addComponent(jLabel49)
+                    .addComponent(jLabel51)
+                    .addComponent(jLabel55)
+                    .addGroup(PodoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel87, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(69, 69, 69))
+                    .addGroup(PodoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel86, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(135, 135, 135))
+                    .addGroup(PodoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel85, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(150, 150, 150))
+                    .addGroup(PodoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel84, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(125, 125, 125)))
+                .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PodoPanelLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DM, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Cardiopatia)
+                            .addComponent(Marcapasos)
+                            .addComponent(jScrollPane3)
+                            .addComponent(HTA, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(corre, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(city)
+                    .addComponent(Direc, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Fnaci, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PodoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PodoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(PodoPanelLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PodoPanelLayout.createSequentialGroup()
                         .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -819,71 +949,42 @@ public class Podologia extends javax.swing.JFrame {
                                 .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PodoPanelLayout.createSequentialGroup()
                                         .addComponent(LimMovilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(190, 190, 190))
+                                        .addGap(125, 125, 125))
                                     .addGroup(PodoPanelLayout.createSequentialGroup()
                                         .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Pulsopedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(Sensivilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(29, 29, 29)
-                                        .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(65, 65, 65))))
+                                        .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(PodoPanelLayout.createSequentialGroup()
+                                                .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(HidratacionIZQ)
+                                                    .addComponent(OlorIZQ)
+                                                    .addComponent(ColorIZQ)
+                                                    .addComponent(TempIZQ)
+                                                    .addComponent(DolorIZQ)
+                                                    .addComponent(InflaIZQ)
+                                                    .addComponent(OtroIZQ))
+                                                .addGap(92, 92, 92))
+                                            .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(PodoPanelLayout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PodoPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(181, 181, 181))
+                                        .addGap(116, 116, 116))
                                     .addGroup(PodoPanelLayout.createSequentialGroup()
                                         .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                                .addComponent(HidratacionDER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(HidratacionIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                                .addComponent(OlorDER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(OlorIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                                .addComponent(ColorDER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(ColorIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                                .addComponent(TempDER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(TempIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                                .addComponent(DolorDER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(DolorIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                                .addComponent(InflaDER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(InflaIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                                .addComponent(OtroDER, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(OtroIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                            .addComponent(HidratacionDER)
+                                            .addComponent(OlorDER)
+                                            .addComponent(ColorDER)
+                                            .addComponent(TempDER)
+                                            .addComponent(DolorDER)
+                                            .addComponent(InflaDER)
+                                            .addComponent(OtroDER))
+                                        .addGap(318, 318, 318))))))
                     .addGroup(PodoPanelLayout.createSequentialGroup()
                         .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel45)
-                            .addComponent(jLabel62)
-                            .addComponent(jLabel47)
-                            .addComponent(jLabel49)
-                            .addComponent(jLabel51)
-                            .addComponent(jLabel55)
-                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel87, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(69, 69, 69))
-                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel86, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(135, 135, 135))
-                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel85, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(150, 150, 150))
-                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel84, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(125, 125, 125))
                             .addComponent(jLabel56)
                             .addComponent(jLabel44)
                             .addComponent(jLabel46)
@@ -892,27 +993,8 @@ public class Podologia extends javax.swing.JFrame {
                             .addComponent(jLabel52)
                             .addComponent(jLabel53)
                             .addComponent(jLabel54))
-                        .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PodoPanelLayout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DM, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Cardiopatia)
-                                    .addComponent(Marcapasos)
-                                    .addComponent(jScrollPane3)
-                                    .addComponent(HTA, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(corre, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(city)
-                            .addComponent(Direc, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Fnaci, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(344, 344, 344)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PodoPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(54, 54, 54))
         );
         PodoPanelLayout.setVerticalGroup(
             PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -955,7 +1037,9 @@ public class Podologia extends javax.swing.JFrame {
                 .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel55)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel56)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PodoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1012,13 +1096,13 @@ public class Podologia extends javax.swing.JFrame {
                     .addComponent(jLabel54)
                     .addComponent(OtroDER, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OtroIZQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jScrollPane2.setViewportView(PodoPanel);
@@ -1109,18 +1193,7 @@ String hora;
     private String barra = File.separator;
     private String Ubicacion = System.getProperty("user.dir") + barra + "Podologia" + barra;
     String limo;
-    String Pulso;
-    String sen;
-    String lavp;
-    String sec;
-    String calza;
-    String calse;
-    String auex;
-    String cdia;
-    String descal;
-    String check;
-    String bolcan;
-    private String limov(boolean lm){
+    private String sino(boolean lm){
         if(lm == true){
             this.limo = "Si";
         }else{
@@ -1128,100 +1201,7 @@ String hora;
         }
         return this.limo;
     }
-    private String pul(boolean lm){
-        if(lm == true){
-            this.Pulso = "Presente";
-        }else{
-            this.Pulso = "Ausente";
-        }
-        return this.Pulso;
-    }
-    private String sensi(boolean lm){
-        if(lm == true){
-            this.sen = "Presente";
-        }else{
-            this.sen = "Ausente";
-        }
-        return this.sen;
-    }
-    private String lavp(boolean lm){
-        if(lm == true){
-            this.lavp = "Si";
-        }else{
-            this.lavp = "No";
-        }
-        return this.lavp;
-    }
-    private String sec(boolean lm){
-        if(lm == true){
-            this.sec = "Si";
-        }else{
-            this.sec = "No";
-        }
-        return this.sec;
-    }
-    
-    private String calza(boolean lm){
-        if(lm == true){
-            this.calza = "Si";
-        }else{
-            this.calza = "No";
-        }
-        return this.calza;
-    }
-    
-    private String calse(boolean lm){
-        if(lm == true){
-            this.calse = "Si";
-        }else{
-            this.calse = "No";
-        }
-        return this.calse;
-    }
-    private String auex(boolean lm){
-        if(lm == true){
-            this.auex = "Si";
-        }else{
-            this.auex = "No";
-        }
-        return this.auex;
-    }
-    
-    private String cdia(boolean lm){
-        if(lm == true){
-            this.cdia = "Si";
-        }else{
-            this.cdia = "No";
-        }
-        return this.cdia;
-    }
-    
-    private String descal(boolean lm){
-        if(lm == true){
-            this.descal = "Si";
-        }else{
-            this.descal = "No";
-        }
-        return this.descal;
-    }
-    
-    private String check(boolean lm){
-        if(lm == true){
-            this.check = "Si";
-        }else{
-            this.check = "No";
-        }
-        return this.check;
-    }
-    
-    private String bolcan(boolean lm){
-        if(lm == true){
-            this.bolcan = "Si";
-        }else{
-            this.bolcan = "No";
-        }
-        return this.bolcan;
-    }
+
     boolean OK = false;
     
     
@@ -1229,6 +1209,13 @@ String hora;
         for(Object o : N1.getComponents()){
             if(o instanceof JTextField){
                 ((JTextField) o).setText("");
+            }
+        }
+    }
+    private void reseteoTA(JPanel N1){
+        for(Object o : N1.getComponents()){
+            if(o instanceof JTextArea){
+                ((JTextArea) o).setText("");
             }
         }
     }
@@ -1245,7 +1232,25 @@ String hora;
     String imagenesGeneral = System.getProperty("user.dir")+barra+"Imagenes"+barra;
     String imagenesFir = imagenesGeneral+"FirmasPodolog"+barra;
     File imgF  = new File(imagenesFir);
+    String fechaReal;
+    private String fecha(String fecP,String fecF){
+        if(fecP.equals("") && !fecF.equals("")){
+            this.fechaReal = fecF;
+        }else{
+            if(!fecP.equals("") && fecF.equals("")){
+                this.fechaReal = fecP;
+            }else{
+                if(fecP.equals(fecF)){
+                    this.fechaReal = fecP;
+                }else{
+                    this.fechaReal = fecF;
+                }
+            }
+        }
+        return fechaReal;
+    }
     private void Crear() {
+        jLabel15.setText(hoy);
         LocalTime ora = LocalTime.now();
         String ubicacion2 = Ubicacion + nombre + barra;
         System.out.println(ubicacion2);
@@ -1259,27 +1264,29 @@ String hora;
                 crea_Ubicacion.mkdirs();
                 imgF.mkdirs();
                 Formatter crea = new Formatter(ubicacion2 + Archivo);
-                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
+                crea.format("%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s\r\n%s",
                         "Fecha=" + hoy,//1
                         "hora=" + ora,//2
                         "Nombre=" + nombre,
                         "Apellido=" + apellido,
                         "Telefono=" + tel,
                         "Edad=" + edad,
-                        "Direcc"+Direc.getText(),
-                        "Mail"+corre.getText(),
-                        "Ciud"+city.getText(),
-                        "Naci"+Fnaci.getText(),
-                        "Fechadecita=" + fecha,
+                        "Direcc="+Direc.getText(),
+                        "Mail="+corre.getText(),
+                        "Ciud="+city.getText(),
+                        "Naci="+Fnaci.getText(),
+                        "Fechadecita=" + fecha(fecha,jTextField9.getText()),
                         "Horadecita=" + hora,
                         "HTA="+HTA.getText(),//10
                         "DM="+DM.getText(),//11
                         "Cardiopatia="+Cardiopatia.getText(),//12
                         "Marcapasos="+Marcapasos.getText(),//13
                         "Otros="+Otros.getText(),//14
-                        "LimMov="+limov(LimMovilidad.isSelected()),//15
-                        "PulsoPedido="+pul(Pulsopedido.isSelected()),//16
-                        "Sensivilidad="+sensi(Sensivilidad.isSelected()),//17
+                        "Farma="+jTextField7.getText(),
+                        "Motiv="+jTextField8.getText(),
+                        "LimMov="+sino(LimMovilidad.isSelected()),//15
+                        "PulsoPedido="+sino(Pulsopedido.isSelected()),//16
+                        "Sensivilidad="+sino(Sensivilidad.isSelected()),//17
                         "HidratacionIZ="+HidratacionDER.getText(),"HidratacionDE="+HidratacionIZQ.getText(),//19
                         "ColorIZ="+ColorDER.getText(),"ColorDE="+ColorIZQ.getText(),//21
                         "OlorIZ="+OlorDER.getText(),"OlorDE="+OlorIZQ.getText(),//23
@@ -1300,22 +1307,22 @@ String hora;
                         "MasPodIZ="+MaspodIZQ.getText(),"MasPodDE="+MaspodDER.getText(),//53
                         "OtrotraIZ="+OtroTraIZQ.getText(),"OtrotraDE="+OtroTraDER.getText(),//55
                         "PatoloIZ="+PatoIZQ.getText(),"PatolDE="+PatoDER.getText(),//57
-                        "LavadoPies="+lavp(Lavpies.isSelected()),//58
-                        "BuebSec="+sec(Buensec.isSelected()),//59
-                        "Calsado="+calza(Calzado.isSelected()),//60
-                        "Calset="+calse(Calcetines.isSelected()),//61
-                        "Autoex="+auex(Autoexamen.isSelected()),//62
-                        "Controdia="+cdia(Controldiab.isSelected()),//63
-                        "Descal="+descal(Descalzo.isSelected()),//64
-                        "Chequeo="+check(Chequeos.isSelected()),//65
-                        "Blosa="+bolcan(Watero.isSelected()),
+                        "LavadoPies="+sino(Lavpies.isSelected()),//58
+                        "BuebSec="+sino(Buensec.isSelected()),//59
+                        "Calsado="+sino(Calzado.isSelected()),//60
+                        "Calset="+sino(Calcetines.isSelected()),//61
+                        "Autoex="+sino(Autoexamen.isSelected()),//62
+                        "Controdia="+sino(Controldiab.isSelected()),//63
+                        "Descal="+sino(Descalzo.isSelected()),//64
+                        "Chequeo="+sino(Chequeos.isSelected()),//65
+                        "Blosa="+sino(Watero.isSelected()),
                         "Indi1="+jTextField3.getText(),
                         "Indi2="+jTextField2.getText(),
                         "Indi3="+jTextField1.getText(),
                         "Indi4="+jTextField4.getText(),
                         "Indi5="+jTextField5.getText(),
-                        "urlFirma="+imgF.getPath()+barra+nombre+" "+apellido+".jpg");//66
-                
+                        "NomJU="+jTextField6.getText(),
+                        "Deriv="+jTextField10.getText());
                 crea.close();
                 this.Listo = true;
                 this.OK = true;
@@ -1349,6 +1356,7 @@ String hora;
         if(Listo == true){
             reseteo(PodoPanel);
             reseteobox(PodoPanel);
+            reseteoTA(PodoPanel);
         }
     }//GEN-LAST:event_FinalizarActionPerformed
 
@@ -1377,7 +1385,6 @@ String hora;
     }//GEN-LAST:event_FnaciActionPerformed
 
     String RutaIMG;
-    File imgimpor;
     int anchres;
     int largres;
     ImageIcon imag = null;
@@ -1545,7 +1552,12 @@ String hora;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -1604,15 +1616,20 @@ String hora;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
